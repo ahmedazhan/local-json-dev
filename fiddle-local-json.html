@@ -1,0 +1,72 @@
+<!-- Written By: Ahmed Azhan Shameem -->
+<html>
+<head>
+    <style>
+        ol > li {
+            cursor: pointer;
+        }
+
+        ol > li > span {
+            display: none;
+        }
+
+        ol > li:hover > span {
+            display: inline-block;
+            padding-left: 5px;
+        }
+    </style>
+    <script>
+        var jsonfile;                                           // mem locator for json input file.
+        var ol;
+
+        // select a json file.
+        function selectFile(e) {
+            // read file using file reader
+            var reader = new FileReader();
+            reader.onload = function(p) {
+                try {
+                    var json = JSON.parse( this.result );       // the file content is accessble via this.result, we try to parse it as json
+                    jsonProcess(json);                          // call our json processor
+                } catch (ex) {
+                    console.log('not a valid json file!', ex);
+                }
+            }
+            reader.readAsText(e.target.files[0]);
+        }
+
+        // bind events to elements
+        function bindTheStuff() {
+            jsonfile = document.getElementById('jsonfile');     // assign memory resource locator of jsonfile input field to variable 
+            jsonfile.addEventListener('change', selectFile);    // add event change -> selectFile function ( event )
+            jsonfile.accept = '.json';                          // set filter
+
+            // create and add ordered list
+            ol = document.createElement('OL');
+            document.body.appendChild(ol);
+        }
+
+
+        function jsonProcess(j) {       
+            j.data.forEach(animal => {
+                var li = document.createElement('li');
+                var sp = document.createElement('span');
+                
+                li.textContent = animal.name;
+                li.style.color = animal.color;
+
+                li.appendChild(sp);     // if we add this before textcontent assigned, it will be cleared.
+                sp.textContent = 'is a ' + animal.indhivehi + ' in dhivehi';
+
+                ol.appendChild(li);
+            });
+        }
+
+    </script>
+</head>
+
+<body onload="bindTheStuff()">
+    <!-- Dont Edit The Bellow Line -->
+    Select JSON File: <input type="file" id="jsonfile">
+    <!-- End -->
+</body>
+</html>

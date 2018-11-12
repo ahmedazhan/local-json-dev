@@ -1,0 +1,26 @@
+{
+    "name": "Ahmed Azhan Shameem",
+    "contact": "ahmedazhan@gmail.com",
+    "data": [
+        {
+            "name": "Bear",
+            "indhivehi": "Saari Dhoalha",
+            "color": "#003366"
+        },
+        {
+            "name": "Lion",
+            "indhivehi": "Singaa",
+            "color": "#CC0066"
+        },
+        {
+            "name": "Cow (Male)",
+            "indhivehi": "Githeyo",
+            "color": "#006600"
+        },
+        {
+            "name": "Gecko",
+            "indhivehi": "Bondu",
+            "color": "#6600FF"
+        }
+    ]
+}
